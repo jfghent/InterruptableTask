@@ -15,5 +15,6 @@ public enum InterruptableTaskState {
     RUNNING,
     WAITING,
     CREATED,
-    INITIALIZED
+    INITIALIZED,
+    COMPLETE
 }

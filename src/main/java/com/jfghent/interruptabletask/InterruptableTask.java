@@ -43,13 +43,20 @@ public class InterruptableTask implements Runnable {
         state = RUNNING;
         content();
         onfinish();
+        finish();
+    }
+    
+    final public void finish(){
+        state = COMPLETE;
+        executor.shutdownNow();
+        //onfinish();
+        System.exit(0); //TODO: Nope
     }
     
     final public void cancel(){
         state = CANCELED;
-        executor.shutdownNow();
         oncancel();
-        onfinish();
+        executor.shutdownNow();
     }
     
     final public void pause(){
@@ -61,7 +68,7 @@ public class InterruptableTask implements Runnable {
         }
     }
     
-    public void resumetask(){
+    final public void resumetask(){
         if(PAUSED==state)
         {
             state = RUNNING;

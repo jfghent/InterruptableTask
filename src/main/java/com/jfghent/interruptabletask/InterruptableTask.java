@@ -50,7 +50,7 @@ public class InterruptableTask implements Runnable {
         state = COMPLETE;
         executor.shutdownNow();
         //onfinish();
-        System.exit(0); //TODO: Nope
+        //System.exit(0); //TODO: Nope
     }
     
     final public void cancel(){
